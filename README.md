@@ -26,6 +26,7 @@ Production Build: npm run build or yarn build
 RabbitMQ was chosen for its documentation with its pika client. 
 
 Setup and config:
+
 [RabbitMQ installation](https://www.rabbitmq.com/download.html)
 
 I use a linux box at home and chose to set up without the community docker image. 
@@ -35,13 +36,27 @@ Installation: used PackageCloud quick start script, changed the distro to be jam
 
 Dependencies:
 All dependencies are listed and included in the quick install script
-(Ubuntu/Debian quick install script)[https://www.rabbitmq.com/install-debian.html]
+[Ubuntu/Debian quick install script](https://www.rabbitmq.com/install-debian.html)
 
 To Scale: 
 I would use the docker community image and incorporate RabbitMQ inside a larger eco system such as with kubernetes to allow for added multiple senders
 
 
 #### Backend: fastapi with main.py
+
+##### fastapi dependencies
+
+pip install:
+
+fastapi
+pika
+uvicorn
+sqlalchemy
+
+Start server: uvicorn main:app --reload
+
+[API Docs](http://127.0.0.1:8000/docs)
+
 
 main.py: the endpoints as well as the 
 

@@ -83,7 +83,7 @@ class Simulation(BaseModel):
 @app.post("/simulations/")
 async def create_simulation(simulation: Simulation):
     # print(Simulation.name)
-    # producer(simulation.number_of_messages)
+    producer(simulation.number_of_messages)
     return simulation
 
 
