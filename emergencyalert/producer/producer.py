@@ -4,34 +4,49 @@ import string
 import random
 import sys
 import uuid
+from pydantic import BaseModel
 
 
-def producer(num_msg: int = 1000):
+class Simulation(BaseModel):
+    name: str
+    category: str
+    number_of_messages: int
+    mean_message_time: int
+    message_failure_rate: float
+    monitoring_interval: int
+    number_of_sender_processes: int
+
+
+class SentMessage(BaseModel):
+    id: int
+    message_content: str
+    simulation: Simulation
+
+
+def producer(simulation: Simulation):
     try:
-        new_sim_id = uuid.uuid4()
 
         connection = pika.BlockingConnection(
             pika.ConnectionParameters(host='localhost'))
 
         channel = connection.channel()
 
-        # declaring a queue, idempotent function
         channel.queue_declare(queue='alerts')
 
-        number_of_messages = num_msg
+        number_of_messages = simulation.number_of_messages
 
         for i in range(int(number_of_messages)):
-            message_content = generate_message()
-            #Assemble message object
-            ##TODO
 
-            #add write to db with message object
-            #TODO
+            new_message = SentMessage(
+                id=generate_phone_number(),
+                message_content=generate_message(),
+                simulation=simulation
+            )
 
             channel.basic_publish(exchange='',
                                   routing_key='alerts',
-                                  body = message_content)
-            print(" [x] Sent '" + message_content + "'")
+                                  body = new_message.json())
+            print(" [x] Sent '" + new_message.json() + "'")
 
         connection.close()
         return True

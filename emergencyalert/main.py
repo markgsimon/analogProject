@@ -45,7 +45,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 from producer.producer import producer
-
+import multiprocessing
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 
@@ -76,14 +76,21 @@ class Simulation(BaseModel):
     category: str
     number_of_messages: int
     message_failure_rate: float
+    mean_message_time: int
     monitoring_interval: int
     number_of_sender_processes: int
 
 
 @app.post("/simulations/")
 async def create_simulation(simulation: Simulation):
-    # print(Simulation.name)
-    producer(simulation.number_of_messages)
+    # pass the simulation to producer
+    producer(simulation)
+
+    # for i in range(simulation.number_of_sender_processes):
+    #     p = multiprocessing.Process(target=sender)
+    #     process_jobs.append(p)
+    #     p.start()
+    #
     return simulation
 
 

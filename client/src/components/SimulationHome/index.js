@@ -21,10 +21,10 @@ import { defaultSettings } from '../../data/defaultState';
 import { SettingsCard } from './styles';
 import CancelButton from '../CancelButton';
 
+
 const SimulationHome = (props) => {
 
-
-  const [simulationSet, setSimulation] = useState(false)
+const [simulationSet, setSimulation] = useState(false)
 
 
 
@@ -76,8 +76,9 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
             category: "simulation",
             number_of_messages: simSettingsFields[0].value,
             message_failure_rate : simSettingsFields[1].value,
-            monitoring_interval: simSettingsFields[2].value,
-            number_of_sender_processes: simSettingsFields[3].value
+            mean_message_time: simSettingsFields[2].value,
+            monitoring_interval: simSettingsFields[3].value,
+            number_of_sender_processes: simSettingsFields[4].value
           
           }
         

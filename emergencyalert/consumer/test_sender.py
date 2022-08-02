@@ -3,8 +3,7 @@ from collections.abc import Iterable
 
 
 def test_sender():
-    # TODO add test for entire sender function
-    assert 1 == 1
+    assert sender()
 
 
 def test_get_sms_tme():

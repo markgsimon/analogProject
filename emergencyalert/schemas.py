@@ -23,7 +23,7 @@ class Message(BaseModel):
     time_sent: str
     time_received: str
     message_success: bool
-    owner_id: int
+    simulation: Simulation
 
     class Config:
         orm_mode = True
