@@ -10,4 +10,4 @@ Backend: fastapi based api with producer and sender
 
 sender: simulates sending the messages by pulling messages from the alerts queue and waiting a certain amount of time with a failure rate
 
-producer: generates strings and publihses to queue
+producer: generates strings and publishes to queue
