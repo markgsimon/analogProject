@@ -1,6 +1,6 @@
-# analogProject
+# emergency alert service
 
-project to simulate an emergency alert system
+#### project to simulate an emergency alert system
 
 Frontend: create-react-app --template typescript
 
