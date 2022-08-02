@@ -21,6 +21,6 @@ producer: generates strings and publishes to queue
 - [ ] add display labels to monitor for stats
 - [ ] populate monitor with stats from api
 - [ ] finish crud.py on backend
-- [ ] finish test cases on apo endpoints
+- [ ] finish test cases on api endpoints for database integration and error handling
 - [ ] convert sender.py and producer.py to use message object keyed with simulation id instead of strings
 - [ ] refactor system to use only queue for sending and receiving of data
