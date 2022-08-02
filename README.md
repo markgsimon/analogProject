@@ -1,6 +1,6 @@
-# emergency alert service
+# Emergency alert service
 
-#### project to simulate an emergency alert system
+#### Project to simulate an emergency alert system via message queue
 
 Frontend: create-react-app --template typescript
 
