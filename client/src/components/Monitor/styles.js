@@ -12,7 +12,6 @@ export const MonitorPage = styled.div`
 export const MonitorContent = styled.div`
 
     width: 70%;
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     

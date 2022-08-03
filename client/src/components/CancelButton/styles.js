@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const CancelButtonBox = styled.div`
 
-    /* width: 80%; */
     border-radius: 75px;
     padding-left: 20px;
     padding-right: 20px;
