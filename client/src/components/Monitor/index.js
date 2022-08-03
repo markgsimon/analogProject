@@ -11,6 +11,7 @@ import {
 import { getSimData } from '../../utils/monitorFetch';
 import CancelButton from '../CancelButton';
 
+
 const Monitor = (props) => {
 
   const [monitoringInterval, setMonitoringInterval] = useState(props.monitoringInterval);
@@ -29,13 +30,13 @@ const Monitor = (props) => {
   }
 
   useEffect(() => {
-    let time = monitoringInterval * 5000
-    // console.log(monitoringInterval)
-    //   const interval = setInterval(() => {getData()}, time)
-    //   return () => {
-    //     clearInterval(interval);
-    //     setMonitoringInterval(0)
-    //   }
+    let time = monitoringInterval * 1000
+    console.log(monitoringInterval)
+      const interval = setInterval(() => {getData()}, time)
+      return () => {
+        clearInterval(interval);
+        setMonitoringInterval(0)
+      }
   }, [])
 
 
@@ -47,7 +48,7 @@ const Monitor = (props) => {
                   <SubTitle>Messages Failed: {failedMessages}</SubTitle>
                   <SubTitle>Average Time Per Message: {averageTime}</SubTitle>
             </MonitorContent>
-                  <CancelButton buttonText = "Cancel simulation" onClick = {props.cancelSim}></CancelButton>
+                  <CancelButton buttonText = "Cancel simulation" onClick = {getSimData}></CancelButton>
         </MonitorPage>
   )
 }

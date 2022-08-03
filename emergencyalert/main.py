@@ -39,17 +39,14 @@ investigate postgresql as a choice instead of sqlite
 """
 
 
-import pika
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-
-from producer.producer import producer
+import json
 import multiprocessing
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-
-channel = connection.channel()
+from producer.producer import producer
+from outboundReader import reader
 
 app = FastAPI()
 
@@ -96,16 +93,7 @@ async def create_simulation(simulation: Simulation):
 
 @app.get("/simulations/")
 async def read_simulation_data():
-    num_message_sent = 10
-    num_failed_message = 1
-    average_message_time = 1
+    return reader()
 
-
-
-    return {
-        "num_message_sent": 10,
-        "num_failed_message": 1,
-        "average_message_time": 4,
-    }
 
 
