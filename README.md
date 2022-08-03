@@ -55,10 +55,15 @@ sqlalchemy
 
 Start server: uvicorn main:app --reload
 
+[fastapi docs](https://fastapi.tiangolo.com/tutorial/first-steps/)
+
+main.py: the endpoints  for the creating and reading simulation data
+
+GET /simulations/
+POST /simulations/ 
+after starting server you can access the api by going here:
+
 [API Docs](http://127.0.0.1:8000/docs)
-
-
-main.py: the endpoints as well as the 
 
 sender: simulates sending the messages by pulling messages from the alerts queue and waiting a certain amount of time with a failure rate
 
@@ -68,9 +73,9 @@ producer: generates strings and publishes to queue
 
 ### TODOS
 - [ ] ~~update readme to reflect environment setup of rabbitmq, frontend and backend~~
-- [ ] update front end to fix styles, background-color, font, layout
-- [ ] add display labels to monitor for stats
-- [ ] unpack message from frontend in api route
-- [ ] forward entire message to producer
-- [ ] use settings from message to set sender
+- [ ] ~~update front end to fix styles, background-color, font, layout~~
+- [ ] ~~add display labels to monitor for stats~~
+- [ ] add api route to read otubound message queue and collect metrics
+- [ ] ~~forward entire message to producer~~
+- [ ] ~~use settings from message to set sender~~
 
