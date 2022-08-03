@@ -13,8 +13,8 @@ export const postNewSim = async (simSettings) => {
                     body: JSON.stringify(simSettings)
                 })
 
-        const simulationStatus = response.JSON();
-
+        const simulationStatus = await response.json();
+        console.log(simulationStatus)
         return simulationStatus;
 
     } catch (error) {
@@ -26,15 +26,15 @@ export const postNewSim = async (simSettings) => {
 export const getSimData = async (simId) => {
     try {
 
-        const response = await fetch(`https://localhost:60238/simulations/`, {
+        const response = await fetch(`http://localhost:8000/simulations/`, {
                                     method: "GET",
-                                    headsers: {
+                                    headers: {
                                         "Content-Type" : "application/json"
                                     },
         })
 
-        const newData = response.JSON();
-
+        const newData = await response.json();
+        console.log(newData)
         return {validRequest: true, data: newData};
 
     } catch (error) {

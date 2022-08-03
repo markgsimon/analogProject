@@ -98,8 +98,11 @@ async def create_simulation(simulation: Simulation):
 async def read_simulation_data():
     num_message_sent = 10
     num_failed_message = 1
-    average_message_time = 4
-    
-    return {}
+    average_message_time = 1
+    return {
+        "num_message_sent": 10,
+        "num_failed_message": 1,
+        "average_message_time": 4,
+    }
 
 

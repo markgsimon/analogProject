@@ -26,7 +26,7 @@ import { defaultSettings } from '../../data/defaultState';
 
 const SimulationHome = (props) => {
 
-const [simulationSet, setSimulation] = useState(true)
+const [simulationSet, setSimulation] = useState(false)
 
 
 

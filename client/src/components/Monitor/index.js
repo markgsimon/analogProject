@@ -21,15 +21,25 @@ const Monitor = (props) => {
 
 
   const getData = async () => {
-
+        const res = await getSimData();
+        console.log(res.data)
+        setMessagesSent(res.data.num_message_sent)
+        setAverageTime(res.data.average_message_time)
+        setFailedMessages(res.data.num_failed_message)
+     
   }
 
   useEffect(() => {
+    let time = monitoringInterval * 5000
+    console.log(monitoringInterval)
+      const interval = setInterval(() => {getData()}, time)
+      return () => {
+        clearInterval(interval);
+        setMonitoringInterval(0)
+      }
+  }, [])
 
-      const interval = setInterval(() => {
 
-      }, monitoringInterval * 100)
-  }, [monitoringInterval])
   return (
         <MonitorPage>
             <MonitorContent>

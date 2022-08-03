@@ -8,7 +8,6 @@ import {
 
 const InputBoxWithLabel = (props) => {
 
-  console.log(props.inputLabel)
   return (
     <InputBox>
         <InputLabel>{props.inputLabel}</InputLabel>
