@@ -94,8 +94,12 @@ async def create_simulation(simulation: Simulation):
     return simulation
 
 
-@app.get("/simulations/{simulation_id}")
-async def read_simulation(simulation_id):
-    return {"simulation_id": simulation_id}
+@app.get("/simulations/")
+async def read_simulation_data():
+    num_message_sent = 10
+    num_failed_message = 1
+    average_message_time = 4
+    
+    return {}
 
 

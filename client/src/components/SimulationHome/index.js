@@ -6,6 +6,10 @@ import {
     Title,
     SubTitle
 } from "../GeneralStyles/styles";
+import { 
+  SettingsCard, 
+  SettingsContent 
+} from './styles';
 
 //Utils
 import { postNewSim } from '../../utils/monitorFetch';
@@ -18,13 +22,11 @@ import Monitor from '../Monitor';
 
 //Default settings state
 import { defaultSettings } from '../../data/defaultState';
-import { SettingsCard } from './styles';
-import CancelButton from '../CancelButton';
 
 
 const SimulationHome = (props) => {
 
-const [simulationSet, setSimulation] = useState(false)
+const [simulationSet, setSimulation] = useState(true)
 
 
 
@@ -69,8 +71,6 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
       
       if(isValid)
       {
-        //assemble settings object
-        //TODO
         const simSettingsObject = {
             name: "sim",
             category: "simulation",
@@ -79,7 +79,6 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
             mean_message_time: simSettingsFields[2].value,
             monitoring_interval: simSettingsFields[3].value,
             number_of_sender_processes: simSettingsFields[4].value
-          
           }
         
         
@@ -96,18 +95,17 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
         <Page>
             <Content>
              {simulationSet 
-                    ? <Monitor cancelSim = {() => setSimulation(false)}/>
+                    ? <Monitor cancelSim = {() => setSimulation(false)} monitoringInterval = {simSettingsFields[4].value}/>
                     :   <SettingsCard>
+                          <SettingsContent>
                             <Title>Welcome to the alert simulator</Title>
                             <SubTitle>Please fill out the settings and press start to simulate an alert service</SubTitle>
                             {simSettingsFields.map((field, index) => renderSimSettingsField(field))}
+                          </SettingsContent>
                             <PrimaryButton buttonText = "Start" onClick = {startSimulation}></PrimaryButton>
                         </SettingsCard>
               }
-
-
             </Content>
-
         </Page>
   )
 }

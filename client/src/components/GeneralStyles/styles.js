@@ -6,14 +6,16 @@ export const Page = styled.div`
     align-items: center;
     /* justify-content: center; */
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background: #F6F6F6;
+    /* border: 1px solid black; */
 `;
 
 
 export const Content = styled.div`
     margin: 5%;
     width: 90%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

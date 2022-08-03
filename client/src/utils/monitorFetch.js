@@ -26,7 +26,12 @@ export const postNewSim = async (simSettings) => {
 export const getSimData = async (simId) => {
     try {
 
-        const response = await fetch(`https://localhost:60238/simulations/${simId}`)
+        const response = await fetch(`https://localhost:60238/simulations/`, {
+                                    method: "GET",
+                                    headsers: {
+                                        "Content-Type" : "application/json"
+                                    },
+        })
 
         const newData = response.JSON();
 
