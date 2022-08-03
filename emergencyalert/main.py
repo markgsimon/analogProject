@@ -2,40 +2,7 @@
 This program is to provide an endpoint for clients to
 submit simulations of an emergency alert service
 as well as to gather data on those services
-
-TODOS
-
-complete database tables
-
-for POST/simulatations/
-add create_simulation_func to create simulation in db with auto-increment UUID to
-
-for POST /simulations/:simid
-add read simulation function that iterates over message table by simulation id
-
-convert messages to object structure in producer
-key messages with simulation_id
-
-convert messages to object structure in sender
-use  simulation id to read simulation table for settings
-write to message table with message time, and success/failure
-
-handle exceptions from database reads and writes
-
-update test cases for sender and producer for
-database integration
-and new message structure
-
-reconfigure rabbitmq to use task queue for consumers
-investigate acknowledgement to avoid problems with shutdown senders
-
-find out how to let main.py spin up multiple senders
-
-investigate docker and kubernetes to containerize
-main ,  sender and the rabbitmq server into a scalable environment
-and allow for the scaling of sender.py
-
-investigate postgresql as a choice instead of sqlite
+ by Mark Simon
 """
 
 
@@ -44,6 +11,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import json
 import multiprocessing
+import threading
 
 from producer.producer import producer
 from outboundReader import reader
@@ -87,13 +55,14 @@ async def create_simulation(simulation: Simulation):
     #     p = multiprocessing.Process(target=sender)
     #     process_jobs.append(p)
     #     p.start()
-    #
+
     return simulation
 
 
-@app.get("/simulations/")
+@app.get("/simulations/data/")
 async def read_simulation_data():
-    return reader()
+    response = reader()
+    return response
 
 
 

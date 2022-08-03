@@ -32,11 +32,11 @@ const Monitor = (props) => {
   useEffect(() => {
     let time = monitoringInterval * 1000
     console.log(monitoringInterval)
-    // const interval = setInterval(() => {getData()}, time)
-    // return () => {
-    //   clearInterval(interval);
-    //   setMonitoringInterval(0)
-    // }
+    const interval = setInterval(() => {getData()}, time)
+    return () => {
+      clearInterval(interval);
+      setMonitoringInterval(0)
+    }
   }, [])
 
 
