@@ -23,7 +23,7 @@ export const reducer = (state, action) => {
                         case 3: 
                         case 4:
                         default:
-                            if(isNaN(field.value)){
+                            if(isNaN(field.value) || field.value === ""){
                                 return {...field, validated: false}
                             } else return {...field, validated: true}
                     }

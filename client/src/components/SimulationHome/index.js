@@ -65,11 +65,11 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
       //validate all fields for bad types
       dispatch({type: "VALIDATEFIELDS"})
       
-      let isValid = simSettingsFields.map((field, index) => {
-        if(!field.validated) return false
-      })
+      // let isValid = simSettingsFields.map((field, index) => {
+      //   if(!field.validated) return false
+      // })
       
-      if(isValid){
+      // if(isValid){
           
         const simSettingsObject = {
             name: "sim",
@@ -83,11 +83,11 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
         
         
         //post sim to api
-        const res = await postNewSim(simSettingsObject);
+        // const res = await postNewSim(simSettingsObject);
         
         //setSimulation
-        setSimulation(true)     
-      }
+        // setSimulation(true)     
+      // }
   }
 
   return (

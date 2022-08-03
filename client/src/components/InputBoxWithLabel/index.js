@@ -7,6 +7,15 @@ import {
 } from "./styles"
 
 const InputBoxWithLabel = (props) => {
+  let validated = false;
+
+  if (props.validated === undefined) validated = true;
+  if (props.validated === true ||   props.validated === false) {
+    validated = props.validated;
+  } else {
+    validated = validated  ||  false;
+  }
+
 
   return (
     <InputBox>
