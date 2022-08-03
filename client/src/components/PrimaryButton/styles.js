@@ -11,6 +11,7 @@ export const ButtonText = styled.div`
 
 
 export const ButtonBox = styled.div`
+    /* margin-bottom: 10%; */
     border-radius: 75px;
     padding-left: 50px;
     padding-right: 50px;

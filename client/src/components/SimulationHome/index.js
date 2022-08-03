@@ -41,11 +41,6 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
   const toggleFieldValidated = (field) => {
     dispatch({type: "TOGGLEFIELDVALIDATED", id: field.id})
   }
-
-  const validateFields = () => {
-    dispatch({type: "VALIDATEFIELDS"})
-  }
-
   const renderSimSettingsField = (field) => {
     console.log(field)
     return <InputBoxWithLabel   key = {field.id}
@@ -65,11 +60,13 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
       //validate all fields for bad types
       dispatch({type: "VALIDATEFIELDS"})
       
-      // let isValid = simSettingsFields.map((field, index) => {
-      //   if(!field.validated) return false
-      // })
+     let isValid = true;
+
+     simSettingsFields.forEach(field => {
+      if(!field.validated) isValid = false
+     })
       
-      // if(isValid){
+      if(isValid){
           
         const simSettingsObject = {
             name: "sim",
@@ -83,11 +80,11 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
         
         
         //post sim to api
-        // const res = await postNewSim(simSettingsObject);
+        const res = await postNewSim(simSettingsObject);
         
         //setSimulation
-        // setSimulation(true)     
-      // }
+        setSimulation(true)     
+      }
   }
 
   return (
