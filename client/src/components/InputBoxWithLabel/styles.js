@@ -14,8 +14,7 @@ export const InputLabel = styled.div`
 
 
 export const InputField = styled.input`
-
-
+        min-height: 20px;
 
 `;
 

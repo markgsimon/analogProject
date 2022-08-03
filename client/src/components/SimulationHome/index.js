@@ -69,12 +69,12 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
         if(!field.validated) return false
       })
       
-      if(isValid)
-      {
+      if(isValid){
+          
         const simSettingsObject = {
             name: "sim",
             category: "simulation",
-            number_of_messages: simSettingsFields[0].value,
+            number_of_messages: simSettingsFields[0].value ? simSettingsFields[0].value : 1000,
             message_failure_rate : simSettingsFields[1].value,
             mean_message_time: simSettingsFields[2].value,
             monitoring_interval: simSettingsFields[3].value,
@@ -97,9 +97,9 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
              {simulationSet 
                     ? <Monitor cancelSim = {() => setSimulation(false)} monitoringInterval = {simSettingsFields[4].value}/>
                     :   <SettingsCard>
-                          <SettingsContent>
                             <Title>Welcome to the alert simulator</Title>
                             <SubTitle>Please fill out the settings and press start to simulate an alert service</SubTitle>
+                          <SettingsContent>
                             {simSettingsFields.map((field, index) => renderSimSettingsField(field))}
                           </SettingsContent>
                             <PrimaryButton buttonText = "Start" onClick = {startSimulation}></PrimaryButton>

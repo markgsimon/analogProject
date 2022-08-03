@@ -10,20 +10,27 @@ export const SimulationBox = styled.div`
 
 export const SettingsCard = styled.div`
 
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    box-shadow: 10px 12px 29px 0px rgba(202,193,193,0.75) inset;
+    -webkit-box-shadow: 10px 12px 29px 0px rgba(202,193,193,0.75) inset;
+    -moz-box-shadow: 10px 12px 29px 0px rgba(202,193,193,0.75) inset;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5%;
 
 `;
 
 export const SettingsContent = styled.div`
     
-    width: 70%;
-    border: 1px solid black;
+    /* width: 30%; */
+   
     display: flex;
     flex-direction: column;
+
+
 `;
