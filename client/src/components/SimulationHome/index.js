@@ -6,9 +6,11 @@ import {
     Title,
     SubTitle
 } from "../GeneralStyles/styles";
+
 import { 
   SettingsCard, 
-  SettingsContent 
+  SettingsContent,
+  RedText 
 } from './styles';
 
 //Utils
@@ -26,11 +28,11 @@ import { defaultSettings } from '../../data/defaultState';
 
 const SimulationHome = (props) => {
 
+
 const [simulationSet, setSimulation] = useState(false)
 
-
-
 const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
+const [validationError, setValidationError] = useState(false);
 
   const onChangeValue = (field, value) =>{
     console.log(value)
@@ -41,6 +43,7 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
   const toggleFieldValidated = (field) => {
     dispatch({type: "TOGGLEFIELDVALIDATED", id: field.id})
   }
+
   const renderSimSettingsField = (field) => {
     console.log(field)
     return <InputBoxWithLabel   key = {field.id}
@@ -55,6 +58,8 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
       console.log(simSettingsFields)
   }, [simSettingsFields])
 
+
+
   const startSimulation = async () => {
 
       //validate all fields for bad types
@@ -65,9 +70,9 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
      simSettingsFields.forEach(field => {
       if(!field.validated) isValid = false
      })
-      
+      setValidationError(isValid ? false : true)
+    
       if(isValid){
-          
         const simSettingsObject = {
             name: "sim",
             category: "simulation",
@@ -94,12 +99,13 @@ const [simSettingsFields, dispatch] = useReducer(reducer, defaultSettings);
              {simulationSet 
                     ? <Monitor cancelSim = {() => setSimulation(false)} monitoringInterval = {simSettingsFields[4].value}/>
                     :   <SettingsCard>
-                            <Title>Welcome to the alert simulator</Title>
+                            <Title>Welcome to the alert simulator!</Title>
                             <SubTitle>Please fill out the settings and press start to simulate an alert service</SubTitle>
+                          {validationError &&  <RedText> Please fill out all neccessary fields that do no have default values</RedText>}
                           <SettingsContent>
                             {simSettingsFields.map((field, index) => renderSimSettingsField(field))}
                           </SettingsContent>
-                            <PrimaryButton buttonText = "Start" onClick = {startSimulation}></PrimaryButton>
+                          <PrimaryButton buttonText = "Start" onClick = {startSimulation}></PrimaryButton>
                         </SettingsCard>
               }
             </Content>

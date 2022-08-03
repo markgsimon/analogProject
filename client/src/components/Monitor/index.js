@@ -32,11 +32,11 @@ const Monitor = (props) => {
   useEffect(() => {
     let time = monitoringInterval * 1000
     console.log(monitoringInterval)
-      const interval = setInterval(() => {getData()}, time)
-      return () => {
-        clearInterval(interval);
-        setMonitoringInterval(0)
-      }
+    // const interval = setInterval(() => {getData()}, time)
+    // return () => {
+    //   clearInterval(interval);
+    //   setMonitoringInterval(0)
+    // }
   }, [])
 
 
@@ -48,7 +48,7 @@ const Monitor = (props) => {
                   <SubTitle>Messages Failed: {failedMessages}</SubTitle>
                   <SubTitle>Average Time Per Message: {averageTime}</SubTitle>
             </MonitorContent>
-                  <CancelButton buttonText = "Cancel simulation" onClick = {getSimData}></CancelButton>
+                  <CancelButton buttonText = "Cancel simulation" onClick = {props.cancelSim}></CancelButton>
         </MonitorPage>
   )
 }

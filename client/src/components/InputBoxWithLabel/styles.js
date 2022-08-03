@@ -14,6 +14,8 @@ export const InputLabel = styled.div`
 
 
 export const InputField = styled.input`
+    padding: 5px;
+    padding-left: 15px;
     min-height: 40px;
     border: 0.5px solid rgba(202, 208, 223, 0.25);
     box-sizing: border-box;

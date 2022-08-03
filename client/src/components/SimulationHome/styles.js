@@ -28,9 +28,15 @@ export const SettingsCard = styled.div`
 export const SettingsContent = styled.div`
     
     /* width: 30%; */
-   
     display: flex;
     flex-direction: column;
-
-
 `;
+
+export const RedText =  styled.div`
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #E73144;
+
+`

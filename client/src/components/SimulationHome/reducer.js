@@ -20,6 +20,7 @@ export const reducer = (state, action) => {
                                 return {...field, validated: true}
                             } else return {...field, validated: false}
                         case 1:
+                            return {...field, validated: true}
                         case 3: 
                         case 4:
                         default:

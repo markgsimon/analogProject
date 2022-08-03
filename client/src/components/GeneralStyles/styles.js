@@ -25,6 +25,7 @@ export const Content = styled.div`
 
 export const Title = styled.div`
     text-align: center;
+    margin-bottom: 5px;
 
 `;
 
